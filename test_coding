@@ -1,0 +1,63 @@
+ <h2>Huruf Duplikat</h2>
+   <form action="" method="POST">
+        <div class="nav">
+            Input :
+            <input type="text" name="input name">
+            <input type="submit" value="name">
+        </div>
+    </form>
+    <?php
+        if(isset($_POST['input'])){
+            $input = $_POST['input'];
+            $hasil = "letters have nothing to duplicate";
+            $break = 0;
+            $tmp_nilai = str_split($input);
+            $panjang = strlen($input);
+            foreach ($tmp_nilai as $key => $value) {
+                for($a=$key+1; $a< $panjang; $a++){
+                    if ( $tmp_nilai[$a] == $tmp_nilai[$a-1] || $tmp_nilai[$key]==$tmp_nilai[$a] ){
+                        $hasil = $tmp_nilai[$a];
+                        $break = 1;
+                        break;
+                    }
+                }
+                if($break==1){
+                    break;
+                }
+            }
+            echo "<div class='nav'>Output : <input type='text' value='".$hasil."'></div>"; 
+        }
+    ?>
+    
+    <h2>Buble Sort</h2>
+    <form action="" method="POST">
+    <div class="nav">
+        Input Number :
+        <input type="text" name="masukan angka" placeholder="Gunakan spasi">
+        <input type="submit" value="Proses">
+    
+    </form>
+    <?php 
+        if(isset($_POST['input'])){
+            $input = $_POST['input'];
+            $output = explode(' ',$input);
+            foreach ($output as $value) {
+                for($i=0; $i<count($output)-1; $i++){
+                    if($output[$i]>$output[$i+1]){
+                        $output[$i]   = $output[$i] + $output[$i+1] ;
+                        $output[$i+1] = $output[$i] - $output[$i+1];
+                        $output[$i]   = $output[$i] - $output[$i+1];
+                    }
+                }
+            }
+            echo "<br>
+            <br> Output : ";
+            for($a=0; $a<count($output); $a++){
+                echo $output[$a]." ";
+            }
+        }else{
+            echo "<br>
+            <br> Output : Empty";
+        }
+    ?>
+    </div>
